@@ -5,7 +5,7 @@ Steps to run the application:-
 2. If the server is accessed through localhost(both wars are deployed in localhost) then there is no change required.
 
 3. Otherwise, follow the below steps
-	3.1 search for "ORIGIN_URL:"https://localhost:8443" in file:- "main.2de5af380eeedd876df7.bundle.js"
+	3.1 search for "ORIGIN_URL:"https://localhost:8443" in file:- "main.26bdb0b34be6c4da1fad.bundle.js"
 	3.2 change the value of ORIGIN_URL to the server IP where "wishlist.war" is deployed
 	
 	OR
