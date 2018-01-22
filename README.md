@@ -1,8 +1,8 @@
 Steps to run the application:-
 
-1. Deploy the wars in any server
+1. Deploy the wars in any server which are  provided in the Deployment folder.
 
-2. If the server is accessed through localhost(both wars are deployed in localhost) then there is no change required.
+2. If the server is accessed through localhost(means both wars are deployed in localhost with URL "https://localhost:8443") then there is no change required.
 
 3. Otherwise, follow the below steps
 	3.1 search for "ORIGIN_URL:"https://localhost:8443" in file:- "main.26bdb0b34be6c4da1fad.bundle.js"
@@ -17,7 +17,7 @@ Steps to run the application:-
 	4.1 https://<hostname>:<port>/MakeAWish
 		For example:- https://localhost:8443/MakeAWish
 	
-P.S. The code is using in-memory database which doesn't require any configuration.
+P.S. The code is using in-memory database which doesn't require any configuration change.
 
 ---------------------------------------------------------------------------------------------------------
 
