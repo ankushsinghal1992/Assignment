@@ -11,13 +11,24 @@ Steps to run the application:-
 	OR
 	
 	3.1 change the value of "ORIGIN_URL" in "rest-constants.service.ts" in "MakeAWish" project
-	3.2 Run mvn install and deploy the war(MakeAWish-0.0.1-SNAPSHOT.war).
+	3.2 Run mvn install and deploy the war(MakeAWish.war).
 	
 4. After successful deployment, use the below URL to access the application.
-	4.1 https://<hostname>:<port>/app
-		For example:- https://localhost:8443/app
+	4.1 https://<hostname>:<port>/MakeAWish
+		For example:- https://localhost:8443/MakeAWish
 	
 P.S. The code is using in-memory database which doesn't require any configuration.
+
+---------------------------------------------------------------------------------------------------------
+
+Please follow below steps if you want to build the source code.
+
+1.) Building MakeAWish 
+	1.1) run "npm install" 
+	1.2) run "mvn install"
+
+2.) Building wishlist-middleware 
+	2.1) run "mvn install"
 
 Thank you!!
 
