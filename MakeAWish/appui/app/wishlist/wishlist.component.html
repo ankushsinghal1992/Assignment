@@ -1,0 +1,55 @@
+<div *ngIf="!rendered">loading...</div>
+<div *ngIf="rendered">
+  <div class="row">
+    <div class="medium-4 columns">
+      <h2>
+        <i class="material-icons">shopping_basket</i>
+        <span>Wishlist</span>
+      </h2>
+    </div>
+    <hr/>
+  </div>
+  <div class="row" *ngIf="status">
+    <div class="medium-12 columns" *ngIf="!listEmpty">
+      <ng-container *ngFor="let product of searchData.products let index = index">
+        <div class="row checkout_row">
+          <div class="medium-2 columns text-center">
+            <a href="{{product.url}}" target="_blank">
+              <img src="{{ product.image | resize }}" class="product_image" />
+            </a>
+          </div>
+          <div class="medium-5 columns">
+            <span class="text--bold js-product-name">{{product?.suggestion}}</span>
+            <p class="js-product-desc">{{product.subTitle}}</p>
+          </div>
+          <div class="medium-2 columns text-right">
+            <p class="text--red js-product-costs">1 x {{product?.separatedSalePrice | price}}</p>
+            <i style="cursor: pointer;" (click)="removeItemFromWishlist(index)" class="material-icons">delete_forever</i><i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+          </div>
+        </div>
+        <br/>
+      </ng-container>
+    </div>
+
+    <div class="medium-12 columns" *ngIf="listEmpty">
+      <h4>Your wishlist is empty..</h4>
+    </div>
+
+    <div class="row">
+      <div class="small-10 columns small-centered">
+        <a class="warning button expanded" routerLink="/MakeAWish">Continue Wishing</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="rendered && !status && !listEmpty">
+  <div class="row">
+    <div class="medium-4 columns">
+      <h2>
+        <i class="material-icons red">error</i>
+        <span>Sorry, there is a technical error. Please try again later.</span>
+      </h2>
+    </div>
+    <hr/>
+  </div>
+</div>

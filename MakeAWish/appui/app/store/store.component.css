@@ -1,0 +1,52 @@
+.product-list {
+  list-style-type: none;
+  margin: 0;
+}
+
+.product-container {
+  padding: 2rem 3rem 0 0;
+  position: relative;
+  border: 1px solid #EFEFEF;
+  margin: 10px 0;
+}
+.product-container:hover {
+  box-shadow: 0 0 5px rgba(50,50,50,0.3);
+}
+
+.product-container .product_image {
+  max-height: 250px;
+}
+
+.product-container .product_price {
+  float: right;
+  margin-top: 1rem;
+}
+
+.searchbar {
+  margin: 1rem;
+}
+
+.search-field {
+  width: 0;
+  height: 40px;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  padding: 0;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.expand-search {
+  width: 90%;
+  border: 1px solid #c9c9c9;
+  padding: .5rem;
+}
+.button {
+  border-radius: 50px;
+}
+
+.error{
+  text-align:   center;
+  color: red;
+}

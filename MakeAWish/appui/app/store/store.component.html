@@ -1,0 +1,100 @@
+<div *ngIf="!rendered">loading...</div>
+<div *ngIf="rendered">
+  <div class="row">
+    <div class="small-12 medium-8 columns">
+      <h3>Pick your wishlist...</h3>
+      <ul class="product-list" *ngIf="status">
+        <li *ngFor="let product of searchData.products let index = index" class="product-container">
+          <div class="row">
+            <div class="medium-3 columns text-center mb-4">
+              <a href="{{product.url}}" target="_blank">
+                <img src="{{ product.image | resize }}" class="product_image" />
+              </a>
+            </div>
+            <div class="medium-9 columns">
+              <h4>
+                <a href="{{product.url}}" target="_blank">
+                  <span class="text--bold js-product-name">{{product?.suggestion}}</span>
+                </a>
+                <small class="product_price js-product-price">{{product?.separatedSalePrice | price}}</small>
+              </h4>
+              <p class="js-product-desc">{{product?.subTitle}}</p>
+              <p>
+                <span class="text--bold">Ratings: {{product?.rating}}</span>
+                <br/>
+                <span class="text--bold">Reviews: {{product?.reviews}}</span>
+                <!-- <span *ngFor="let ingredient of product?.ingredients ">
+                  {{ingredient?.name}} ({{ingredient?.percentage}}%)
+                  <br/>
+                </span> -->
+              </p>
+              <p>
+                <button type="button" class="button large js-btn-add" [ngClass]="{disabled : (addedWishlists.indexOf(index) != -1) , 
+                          'success' : (addedWishlists.indexOf(index) == -1),
+                          'alert' : (addedWishlists.indexOf(index) != -1)}" [disabled]="" (click)="addProductToWishlist(index,$event)">
+                  <span *ngIf="(addedWishlists.indexOf(index) != -1)">Added</span>
+                  <span *ngIf="(addedWishlists.indexOf(index) == -1)">Add to Wishlist</span>
+                </button>
+
+                <button type="button" class="button small js-btn-remove" *ngIf="showErrorList.indexOf(index) != -1" (click)="showHideError(index)">Error while adding..</button>
+              </p>
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="small-12 medium-4 columns">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="input-group">
+            <div class="input-group-button">
+              <button (click)="onSearchIconClick()" class="button search ">
+                <i style="cursor: pointer;" class="material-icons">search</i>
+              </button>
+            </div>
+            <input class="input-field search-field" [(ngModel)]="searchItem" [ngClass]="{'expand-search' : searchClicked}" type="search"
+              placeholder="Search" />
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="searchItem && searchItem.length > 0">
+        <div class="small-12 columns">
+          <a class="success button large expanded " (click)="search()">
+            <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Search
+          </a>
+        </div>
+      </div>
+      <div class="row" *ngIf="status">
+        <div class="small-12 columns">
+          <a class="success button large expanded" [attr.disabled]="addedWishlists.length === 0 ? true : null" routerLink="/MakeAWish/checkout">
+            View my wishlist
+          </a>
+        </div>
+      </div>
+      <div class="row" *ngIf="status">
+        <div class="small-12 columns text-center">
+          or
+        </div>
+      </div>
+      <div class="row" *ngIf="status">
+        <div class="small-12 columns">
+          <button type="button" class="secondary button small expanded js-btn-empty-cart" (click)="clearWishlist()" [attr.disabled]="addedWishlists.length === 0 ? true : null">
+            Clear my wishlist
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="rendered && !status">
+  <div class="row">
+    <div class="medium-4 columns">
+      <h2>
+        <i class="material-icons red">error</i>
+        <span>Sorry, there is a technical error. Please try again later.</span>
+      </h2>
+    </div>
+    <hr/>
+  </div>
+</div>
